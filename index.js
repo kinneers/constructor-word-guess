@@ -10,3 +10,11 @@ var inquirer = require('inquirer');
 var wordArray = ['cat', 'dog', 'fish', 'chicken', 'pig'];
 
 var chosenWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+
+var gameWord = new Word(chosenWord);
+
+gameWord.makeWord();
+
+function promptUser() {
+    
+}
