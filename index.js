@@ -7,6 +7,8 @@ var Word = require('./word.js');
 var Letter = require('./letter.js');
 var inquirer = require('inquirer');
 
+//Welcomes the user to the game (first round only)
+console.log("\nWelcome to the Word Guess Game!  Here is your first word:");
 
 function playGame() {
     var wordArray = ['cat', 'dog', 'fish', 'chicken', 'pig'];
@@ -19,11 +21,7 @@ function playGame() {
 
     var letterCheck = /^[a-z]$/ //Regex to test for valid letter input
 
-//FOR TESTING- REMOVE BEFORE FINAL PUSH
-    console.log(gameWord);
-
-    //Welcomes the user to the game
-    console.log("\nWelcome to the Word Guess Game!  Here is your first word:");
+    
     //Displays the number of characters in the chosen word with underscores at the start of the game
     gameWord.display();
 
@@ -52,29 +50,49 @@ function playGame() {
                         console.log('\nCORRECT!  :)');
                     } else {
                         guessesLeft--;
-                        console.log('\nINCORRECT!  :(\n\nYou have ' + guessesLeft + ' guesses remaining.');
+                        //Proper grammar is essential:
+                        if (guessesLeft > 1 || guessesLeft === 0) {
+                            console.log('\nINCORRECT!  :(\n\nYou have ' + guessesLeft + ' guesses remaining.');
+                        }
+                        else {
+                            console.log('\nINCORRECT!  :(\n\nYou have ' + guessesLeft + ' guess remaining.');
+                        }
                     }
-                    gameWord.display();
-                    if (guessesLeft === 0) {
-                        console.log("You ran out of guesses!");
+                    //Boolean to determine whether or not all letters have been guessed
+                    var keepGoing = false;
+                    for (j = 0; j < gameWord.letters.length; j++) {
+                        if (gameWord.letters[j].guessed === false) {
+                            var keepGoing = true;
+                        }
+                    }
+                    if (keepGoing === false) {
+                        gameWord.display();
+                        console.log("You win!!!  :)\n");
                         playAgain();
                     } else {
-                        promptUser();
+                        gameWord.display();
+                        if (guessesLeft === 0) {
+                            console.log("\nYou ran out of guesses!\n");
+                            playAgain();
+                        } else {
+                            promptUser();
+                        }
                     }
                 } 
                 else {
                     console.log("Error");
                 }
             } else {
-                console.log("This is not a valid letter");
+                console.log("\nThis is not a valid letter\n");
                 promptUser();
             }
         });
     }
-//Prompts use for first guess at the beginning of the game
+//Prompts user for first guess at the beginning of the game
 promptUser();
 }
 
+//Prompts user to play again or exit after a win or a loss
 function playAgain() {
     inquirer.prompt([
         {
@@ -85,12 +103,12 @@ function playAgain() {
         }
     ]).then(function(res) {
         if (res.again === 'Play Again') {
+            console.log("\nGreat! Here is your next word:")
             playGame();
         } else {
-            console.log("That was fun!  See you next time!");
+            console.log("\nThat was fun!  See you next time!\n");
         }
     });
 }
-
 
 playGame();
