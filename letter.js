@@ -8,10 +8,8 @@ function Letter(letter) {
     //Function that returns the underlying character if the letter has been guessed, or an underscore if the letter has not been guessed
     this.showLetter = function() {
         if (this.guessed) {
-            console.log(this.letter);
-            return(this.letter);
+            return(this.letter.toUpperCase());
         } else {
-            console.log('_');
             return('_');
         }
     }
@@ -19,14 +17,8 @@ function Letter(letter) {
     this.letterGuessed = function(character) {
         if (character === this.letter) {
             this.guessed = true;
-        } 
+        }
     }
 }
-
-var  b = new Letter('b');
-
-b.showLetter();
-b.letterGuessed('b');
-b.showLetter();
 
 module.exports = Letter;

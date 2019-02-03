@@ -19,7 +19,7 @@ function Word(word) {
         for (var i = 0; i < this.letters.length; i++) {
             displayArray.push(this.letters[i].showLetter());
         }
-        console.log(displayArray.join(' '));
+        console.log('\n' + displayArray.join(' ') + '\n');
     }
     // Function that takes a character as an argument and calls the guess function on each letter object (the second function defined in letter.js)
     this.makeGuess = function(guess) {
@@ -28,13 +28,5 @@ function Word(word) {
         }
     }
 }
-
-var cat = new Word('cat');
-cat.makeWord();
-
-cat.makeGuess('c');
-cat.makeGuess('t')
-cat.makeGuess('m')
-cat.display();
 
 module.exports = Word;
