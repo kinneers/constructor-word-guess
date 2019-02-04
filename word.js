@@ -5,7 +5,7 @@ var Letter = require('./letter');
 function Word(word) {
     this.word = word;
     // Array of new Letter objects representing the letters of the underlying word
-    this.letters = []; 
+    this.letters = [];
     // Function that returns a string representing the word (pushes to this.letters' array)
     this.makeWord = function() {
         var letterArray = this.word.split('');

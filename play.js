@@ -1,5 +1,5 @@
 /*
-Name: Constructor Word Guess
+Name: Constructor Word Guess (Valentine's Day Theme)
 Developer: Sarah Kinneer
 Date: February, 2019
 */
@@ -13,7 +13,7 @@ var inquirer = require('inquirer');
 console.log("\nWelcome to the Word Guess Game!  Here is your first word:");
 
 function playGame() {
-    var wordArray = ['cat', 'dog', 'fish', 'chicken', 'pig'];
+    var wordArray = ['box of chocolates', "cupid's bow and arrow"];
     var guessesLeft = 10;
 
     //Randomly chooses word for the user to guess
