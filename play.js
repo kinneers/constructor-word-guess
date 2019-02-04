@@ -1,10 +1,12 @@
-/*index.js: The file containing the logic for the course of the game, which depends on Word.js and:
+/*
+Name: Constructor Word Guess
+Developer: Sarah Kinneer
+Date: February, 2019
+*/
 
-Randomly selects a word and uses the Word constructor to store it
-Prompts the user for each guess and keeps track of the user's remaining guesses*/
+//play.js: The file containing the logic for the course of the game, which depends on word.js
 
 var Word = require('./word.js');
-var Letter = require('./letter.js');
 var inquirer = require('inquirer');
 
 //Welcomes the user to the game (first round only)
@@ -20,7 +22,6 @@ function playGame() {
     gameWord.makeWord(); //Calls the makeWord function from word.js
 
     var letterCheck = /^[a-z]$/ //Regex to test for valid letter input
-
     
     //Displays the number of characters in the chosen word with underscores at the start of the game
     gameWord.display();
@@ -34,8 +35,11 @@ function playGame() {
                 name: 'newGuess'
             }
         ]).then(function(res) {
+            //Assigns user input to variable and converts to lowercase (if not already)
             character = res.newGuess.toLowerCase()
+            //Validates user input
             if (letterCheck.test(character)) {
+                //Code to run if guesses remain
                 if (guessesLeft >= 1) {
                     gameWord.makeGuess(character);
                     //Boolean for if the guessed character is in the word
@@ -60,29 +64,36 @@ function playGame() {
                     }
                     //Boolean to determine whether or not all letters have been guessed
                     var keepGoing = false;
+                    //Checks if any letters have yet to be guessed
                     for (j = 0; j < gameWord.letters.length; j++) {
                         if (gameWord.letters[j].guessed === false) {
                             var keepGoing = true;
                         }
                     }
+                    //Code to run if all letters have been guessed
                     if (keepGoing === false) {
                         gameWord.display();
                         console.log("You win!!!  :)\n");
                         playAgain();
                     } else {
+                        //Display updated word
                         gameWord.display();
+                        //If there are no guesses left, alert user and prompt to play again or exit
                         if (guessesLeft === 0) {
                             console.log("\nYou ran out of guesses!\n");
                             playAgain();
                         } else {
+                        //If there are guesses remaining, prompt user to continue
                             promptUser();
                         }
                     }
                 } 
+                //If user has run out of guesses it should be handled within above code- if not, an error will be logged and the user will be instructed to exit the program
                 else {
-                    console.log("Error");
+                    console.log("Error.  Press Control-C or Command-C to exit.");
                 }
             } else {
+                //Code to run if user input is not valid
                 console.log("\nThis is not a valid letter\n");
                 promptUser();
             }
