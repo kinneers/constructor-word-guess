@@ -13,7 +13,7 @@ var inquirer = require('inquirer');
 console.log("\nWelcome to the Word Guess Game!  Here is your first word:");
 
 function playGame() {
-    var wordArray = ['box of chocolates', "cupid's bow and arrow"];
+    var wordArray = ['box of chocolates', "cupid's bow and arrow", 'february fourteenth', 'saint valentine', 'unrequited love', 'secret admirer', 'conversation hearts', 'bouquet of flowers', 'sweetheart', 'be my valentine', 'hopeless romantic', 'love at first sight', 'forget-me-nots', "can't help falling in love with you"];
     var guessesLeft = 10;
 
     //Randomly chooses word for the user to guess
