@@ -22,7 +22,14 @@ function playGame() {
     gameWord.makeWord(); //Calls the makeWord function from word.js
 
     var letterCheck = /^[a-z]$/ //Regex to test for valid letter input
-    
+
+    //Sets status "guessed" to true to any special characters (spaces, apostrophes, etc.) in the game word
+    for (var x = 0; x < gameWord.letters.length; x++) {
+        if (!letterCheck.test(gameWord.letters[x].letter)) {
+            gameWord.letters[x].guessed = true;
+        }
+    }
+
     //Displays the number of characters in the chosen word with underscores at the start of the game
     gameWord.display();
 
