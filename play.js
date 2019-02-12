@@ -21,7 +21,7 @@ function playGame() {
     var gameWord = new Word(chosenWord); //Passes chosen word to the Word constructor
     gameWord.makeWord(); //Calls the makeWord function from word.js
 
-    var letterCheck = /^[a-z]$/ //Regex to test for valid letter input
+    var letterCheck = /^[a-z]$/; //Regex to test for valid letter input
 
     //Sets status "guessed" to true to any special characters (spaces, apostrophes, etc.) in the game word
     for (var x = 0; x < gameWord.letters.length; x++) {
@@ -74,7 +74,7 @@ function playGame() {
                     //Checks if any letters have yet to be guessed
                     for (j = 0; j < gameWord.letters.length; j++) {
                         if (gameWord.letters[j].guessed === false) {
-                            var keepGoing = true;
+                            keepGoing = true;
                         }
                     }
                     //Code to run if all letters have been guessed
