@@ -18,5 +18,8 @@
   "homepage": "https://github.com/kinneers/constructor-word-guess#readme",
   "dependencies": {
     "inquirer": "^6.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.1"
   }
 }

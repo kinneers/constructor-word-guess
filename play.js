@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /*
 Name: Constructor Word Guess (Valentine's Day Theme)
 Developer: Sarah Kinneer
@@ -43,7 +44,7 @@ function playGame() {
             }
         ]).then(function(res) {
             //Assigns user input to variable and converts to lowercase (if not already)
-            character = res.newGuess.toLowerCase()
+            var character = res.newGuess.toLowerCase()
             //Validates user input
             if (letterCheck.test(character)) {
                 //Code to run if guesses remain
@@ -52,7 +53,7 @@ function playGame() {
                     //Boolean for if the guessed character is in the word
                     var inWord = false;
                     //Loop through the letter array and determine if the guess was correct or incorrect- console log result and decrement guesses if incorrect
-                    for (i = 0; i < gameWord.letters.length; i++) {
+                    for (var i = 0; i < gameWord.letters.length; i++) {
                         if (character === gameWord.letters[i].letter) {
                             inWord = true;
                         }
@@ -72,7 +73,7 @@ function playGame() {
                     //Boolean to determine whether or not all letters have been guessed
                     var keepGoing = false;
                     //Checks if any letters have yet to be guessed
-                    for (j = 0; j < gameWord.letters.length; j++) {
+                    for (var j = 0; j < gameWord.letters.length; j++) {
                         if (gameWord.letters[j].guessed === false) {
                             keepGoing = true;
                         }
